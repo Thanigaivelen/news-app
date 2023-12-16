@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import { Col, Container, Row } from 'react-bootstrap';
 import './News.css'
 const News = () => {
@@ -12,14 +12,15 @@ const News = () => {
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=in&apiKey=ab9e11847a9a42d1985ddf6a3ed52bdc`
-      );
-      setNews(response.data.articles);
+      // Assuming newsapi.json is in the public folder
+      const response = await fetch('/newsapi.json');
+      const data = await response.json();
+      setNews(data.articles);
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
