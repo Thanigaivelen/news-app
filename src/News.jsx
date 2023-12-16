@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import SearchIcon from '@mui/icons-material/Search';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { Col, Container, Row } from 'react-bootstrap';
 import './News.css'
 const News = () => {
@@ -31,9 +32,7 @@ const fetchNews = async () => {
 //   }
 // };
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
+
 
   const filteredNews = news.filter((article) =>
     article.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -41,15 +40,22 @@ const fetchNews = async () => {
 
   return (
     <div>
+     <div className='header'>
+        <h1 className='heading'>NEWS APP</h1>
+        <NewspaperIcon/>
+      </div>
       <Container className="mt-5">
         <Row className="justify-content-center mb-4">
           <Col xs={6}>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="form-control"
-              onChange={handleSearch}
-            />
+            <div className="search-container">
+              <input
+                type="text"
+                placeholder="Search..."
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-bar"
+              />
+              <SearchIcon className="search-icon" />
+            </div>
           </Col>
         </Row>
         <Row className="justify-content-center">

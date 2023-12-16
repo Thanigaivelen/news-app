@@ -58,3 +58,42 @@
 
   /* Additional styles for smaller screens */
 }
+.search-container {
+    position: relative;
+  }
+  
+  .search-bar {
+    padding: 10px;
+    width: 100%; /* Adjust as needed based on your search icon size */
+  }
+
+  .header {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .heading {
+    padding-right: 10px;
+    color: #000; 
+    font-size: 24px; 
+    font-weight: bold; 
+  }
+  
+  .NewspaperIcon {
+    
+    color: #000; 
+    font-size: 26px; 
+  }
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px; 
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
