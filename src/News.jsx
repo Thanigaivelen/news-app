@@ -10,17 +10,26 @@ const News = () => {
     fetchNews();
   }, []);
 
-  const fetchNews = async () => {
-    try {
-      // Assuming newsapi.json is in the public folder
-      const response = await fetch('/newsapi.json');
-      const data = await response.json();
-      setNews(data.articles);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
+const fetchNews = async () => {
+  try {
+    // Assuming newsapi.json is in the public folder
+    const response = await fetch('/newsapi.json');
+    const data = await response.json();
+    setNews(data.articles);
+  } catch (error) {
+    console.error(error);
+  }
+};
+// const fetchNews = async () => {
+//   try {
+//     const response = await axios.get(
+//       `https://newsapi.org/v2/top-headlines?country=in&apiKey=ab9e11847a9a42d1985ddf6a3ed52bdc`
+//     );
+//     setNews(response.data.articles);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -46,17 +55,20 @@ const News = () => {
         <Row className="justify-content-center">
           {filteredNews.map((article) => (
             <Col key={article.url} xs={12} lg={6} className="mb-4">
-              <div className="card">
-                <img
-                  src={article.urlToImage}
-                  alt={article.title}
-                  className="card-img-top"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{article.title}</h5>
-                  <p className="card-text">{article.description}</p>
+              {/* Wrap the card with an anchor tag */}
+              <a href={article.url} target="_blank" rel="noopener noreferrer" className="article-link">
+                <div className="card">
+                  <img
+                    src={article.urlToImage}
+                    alt={article.title}
+                    className="card-img-top"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{article.title}</h5>
+                    <p className="card-text">{article.description}</p>
+                  </div>
                 </div>
-              </div>
+              </a>
             </Col>
           ))}
         </Row>
