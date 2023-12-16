@@ -62,7 +62,7 @@ const fetchNews = async () => {
           {filteredNews.map((article) => (
             <Col key={article.url} xs={12} lg={6} className="mb-4">
               {/* Wrap the card with an anchor tag */}
-              <a href={article.url} target="_blank" rel="noopener noreferrer" className="article-link">
+              
                 <div className="card">
                   <img
                     src={article.urlToImage}
@@ -72,9 +72,13 @@ const fetchNews = async () => {
                   <div className="card-body">
                     <h5 className="card-title">{article.title}</h5>
                     <p className="card-text">{article.description}</p>
+                    <a className='card-text' href={article.url} target="_blank" rel="noopener noreferrer" >
+                    <span>Show More →</span>
+                  </a>
+                
                   </div>
                 </div>
-              </a>
+              
             </Col>
           ))}
         </Row>
