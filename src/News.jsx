@@ -22,7 +22,7 @@ const News = () => {
   };
   useEffect(() => {
     fetchNews();
-  }, );
+  },[] );
 
 
   const handleSearch = (e) => {
